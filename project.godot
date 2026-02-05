@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="rpg"
-run/main_scene="uid://dx5xxnyv4k330"
+run/main_scene="uid://bsjix535lauoq"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/images/other/icon.svg"
 
 [display]
 

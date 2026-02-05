@@ -1,0 +1,30 @@
+# Godot-specific ignores
+.godot/
+.import/
+export_presets.cfg
+
+# Imported media overrides
+*.import
+
+# Mono/C# specific ignores
+.mono/
+*.sln
+*.csproj
+*.gen.cpp
+*.gen.h
+bin/
+obj/
+
+# OS-specific ignores
+.DS_Store
+Thumbs.db
+
+# Exported binaries
+*.exe
+*.zip
+*.apk
+*.ipa
+*.dmg
+*.app
+*.pck
+*.jar

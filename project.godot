@@ -15,10 +15,19 @@ run/main_scene="uid://bsjix535lauoq"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/images/other/icon.svg"
 
+[autoload]
+
+SceneManager="*uid://d0cs7ytgvjai7"
+ScreenTransition="*uid://ctw2uscahom2h"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[global_group]
+
+Player=""
 
 [input]
 

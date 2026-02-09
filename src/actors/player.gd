@@ -7,6 +7,12 @@ var inventory = ["Map", "Old Key"]
 @onready var sprite = $AnimatedSprite2D
 
 func _physics_process(_delta):
+	# 若正在切換地圖，禁止玩家移動
+	if SceneManager.is_transitioning:
+		velocity = Vector2.ZERO # 禁用玩家移動
+		move_and_slide()
+		return
+
 	# 使用 get_vector 取得方向
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 

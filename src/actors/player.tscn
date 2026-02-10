@@ -311,9 +311,10 @@ scale = Vector2(0.07202142, -0.027147336)
 shape = SubResource("CapsuleShape2D_w0bku")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2014164122]
-position = Vector2(640, 360)
+position = Vector2(-73.5, -90.500015)
+scale = Vector2(-6.603776, -57.172325)
+process_callback = 0
 limit_left = 0
 limit_top = 0
-limit_right = 1280
-limit_bottom = 720
+position_smoothing_enabled = true
 script = ExtResource("3_1oxso")

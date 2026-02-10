@@ -19,11 +19,13 @@ config/icon="res://assets/images/other/icon.svg"
 
 SceneManager="*uid://d0cs7ytgvjai7"
 ScreenTransition="*uid://ctw2uscahom2h"
+Utils="*uid://h35km1yg6v4y"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [global_group]
 

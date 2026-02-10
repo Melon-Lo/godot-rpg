@@ -3,6 +3,9 @@
     "cSpell.words": [
         "elif",
         "onready",
-        "teleporting"
+        "teleporting",
+        "tilemaplayers",
+        "tilemaps",
+        "tscn"
     ]
 }

@@ -30,11 +30,32 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	# 判斷：如果需要按鍵 + 玩家在範圍內 + 按下空白鍵
-	# ui_accept 預設含空白鍵
+	# 若需要按鍵，則也需要面對傳送門方向按
 	if require_input and player_in_range and event.is_action_pressed("ui_accept"):
+		var player = get_tree().get_first_node_in_group("Player")
+
+		if player:
+			# 取得玩家的面對方向
+			var face_dir = Vector2.ZERO
+			if player.last_direction == "up":
+				face_dir = Vector2.UP
+			elif player.last_direction == "down":
+				face_dir = Vector2.DOWN
+			elif player.last_direction == "side":
+				if player.sprite.flip_h:
+					face_dir = Vector2.LEFT
+				else:
+					face_dir = Vector2.RIGHT
+
+			# 計算玩家到傳送門的方向
+			var dir_to_portal = player.global_position.direction_to(global_position)
+
+			# 如果面向與傳送門方向的夾角太大，則不觸發傳送
+			if face_dir.dot(dir_to_portal) < 0.3:
+				return
+
 		teleport()
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)

@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 @export var speed = 400
-
-var inventory = ["Map", "Old Key"]
-
 @onready var sprite = $AnimatedSprite2D
 @onready var camera = $Camera2D
 
+var target_position = Vector2.ZERO
+var is_mouse_moving = false
 var last_direction = "side"
+var inventory = ["Map", "Old Key"]
 
 func setup_camera_limits():
 	var map_container = get_node("/root/Main/World/MapContainer")
@@ -51,6 +51,25 @@ func setup_camera_limits():
 		camera.limit_right = int(offset.x + (total_rect.end.x * tile_size.x * map_scale.x))
 		camera.limit_bottom = int(offset.y + (total_rect.end.y * tile_size.y * map_scale.y))
 
+
+# 提供給寶箱呼叫的函數
+# func add_item(item_name):
+# 	inventory.append(item_name)
+# 	print("獲得了：", item_name)
+# 	print("目前背包：", inventory)
+
+func _ready():
+	# 初始化時，目標就是當前位置，避免角色一開場就亂跑
+	target_position = position
+
+func _input(event):
+	# 點擊滑鼠左鍵時，觸發移動
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			target_position = get_global_mouse_position()
+			is_mouse_moving = true
+			print("目標設定在: ", target_position) # 測試用：解除註解可確認點擊位置
+
 func _physics_process(_delta):
 	# 若正在切換地圖，禁止玩家移動
 	if SceneManager.is_transitioning:
@@ -59,9 +78,25 @@ func _physics_process(_delta):
 		return
 
 	# 使用 get_vector 取得方向
-	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var keyboard_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var final_direction = Vector2.ZERO
 
-	if direction != Vector2.ZERO:
+	if keyboard_direction != Vector2.ZERO:
+		# 鍵盤移動（優先）
+		final_direction = keyboard_direction
+		is_mouse_moving = false
+	elif is_mouse_moving:
+		# 滑鼠移動
+		var distance = global_position.distance_to(target_position)
+		if distance > 5: # 緩衝距離
+			final_direction = (target_position - global_position).normalized()
+		else:
+			is_mouse_moving = false
+			final_direction = Vector2.ZERO
+
+	print("移動方向：", final_direction)
+
+	if final_direction != Vector2.ZERO:
 		# --- 滑動邏輯開始 ---
 		# 嘗試預判移動，如果會撞到，檢查是否可以滑向旁邊
 		# var collision = move_and_collide(direction * speed * _delta, true)
@@ -72,36 +107,20 @@ func _physics_process(_delta):
 		# 	direction = direction.slide(normal).normalized()
 		# --- 滑動邏輯結束 ---
 
-		velocity = direction * speed
+		velocity = final_direction * speed
 
 		# 動態切換動畫
-		if abs(direction.y) > abs(direction.x):
-			# 垂直移動優先
-			if direction.y < 0:
-				sprite.play("walk_up")
-				last_direction = "up"
-			else:
-				sprite.play("walk_down")
-				last_direction = "down"
-		else:
-			# 水平移動
-			sprite.play("walk_side")
-			sprite.flip_h = direction.x < 0
-			last_direction = "side"
+		_play_walk(final_direction)
+
 	else:
 		# 停止移動
 		velocity = Vector2.ZERO
 
 		# 動態切換動畫
-		if last_direction == "up":
-			sprite.play("idle_up")
-		elif last_direction == "down":
-			sprite.play("idle_down")
-		else:
-			sprite.play("idle_side")
+		_play_idle()
 
 
-	# 修正：使用 move_and_slide 處理碰撞，它會自動處理 delta
+	# 執行移動
 	move_and_slide()
 
 	# [DEV ONLY] 碰撞偵測
@@ -112,13 +131,25 @@ func _physics_process(_delta):
 	# 	# 在輸出視窗印出撞到的對象名稱與座標
 	# 	print("撞到了: ", collider.name, " 座標: ", collision.get_position())
 
-# 提供給寶箱呼叫的函數
-# func add_item(item_name):
-# 	inventory.append(item_name)
-# 	print("獲得了：", item_name)
-# 	print("目前背包：", inventory)
+# 走路動畫
+func _play_walk(dir):
+	if abs(dir.y) > abs(dir.x):
+		if dir.y < 0:
+			sprite.play("walk_up")
+			last_direction = "up"
+		else:
+			sprite.play("walk_down")
+			last_direction = "down"
+	else:
+		sprite.play("walk_side")
+		sprite.flip_h = dir.x < 0
+		last_direction = "side"
 
-func _ready():
-	pass
-	# setup_camera_limits()
-	# setup_camera_limits.call_deferred()
+# 待機動畫
+func _play_idle():
+	if last_direction == "up":
+		sprite.play("idle_up")
+	elif last_direction == "down":
+		sprite.play("idle_down")
+	else:
+		sprite.play("idle_side")

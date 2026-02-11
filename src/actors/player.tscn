@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://4w7ejvth7jpm"]
 
 [ext_resource type="Script" uid="uid://dd4h4me6o0ypu" path="res://src/actors/player.gd" id="1_foe4e"]
-[ext_resource type="Script" uid="uid://bt1qkg17p3wkn" path="res://camera_2d.gd" id="3_1oxso"]
 [ext_resource type="Texture2D" uid="uid://c7kjw33faq0fk" path="res://assets/images/charactors/player.png" id="3_xk21n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2d042"]
@@ -317,4 +316,3 @@ process_callback = 0
 limit_left = 0
 limit_top = 0
 position_smoothing_enabled = true
-script = ExtResource("3_1oxso")

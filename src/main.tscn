@@ -22,6 +22,11 @@ border_color = Color(0.50500894, 0.9165033, 0.41913044, 1)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_mgm53"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_uewes"]
+font_size = 14
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node2D" unique_id=1018068291]
 y_sort_enabled = true
 script = ExtResource("1_h2yge")
@@ -303,9 +308,26 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 80.0
 grow_horizontal = 0
+focus_mode = 0
 toggle_mode = true
 texture_normal = ExtResource("10_mgm53")
 texture_pressed = ExtResource("11_uewes")
+
+[node name="Label" type="Label" parent="UIManager/MenuButton" unique_id=1214826093]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = 5.0
+offset_right = 2.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "選單 (Tab)"
+label_settings = SubResource("LabelSettings_uewes")
 
 [connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/InventoryButton" to="UIManager" method="change_tab" binds= [0]]
 [connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/EquipmentButton" to="UIManager" method="change_tab" binds= [1]]

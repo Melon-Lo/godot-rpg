@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cj7fmtgf7jylr"]
 
 [ext_resource type="Script" uid="uid://bwgwpu3fd7k4j" path="res://src/objects/portal.gd" id="1_1chce"]
+[ext_resource type="PackedScene" uid="uid://drnlae78prinr" path="res://src/core/ui/interaction_prompt.tscn" id="2_vt76k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt76k"]
 size = Vector2(27.5, 55.5)
@@ -11,3 +12,8 @@ script = ExtResource("1_1chce")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1614954982]
 position = Vector2(15.25, 30.25)
 shape = SubResource("RectangleShape2D_vt76k")
+
+[node name="InteractionPrompt" parent="." unique_id=853998258 instance=ExtResource("2_vt76k")]
+position = Vector2(26, -3)
+
+[connection signal="input_event" from="." to="." method="_on_portal_input_event"]

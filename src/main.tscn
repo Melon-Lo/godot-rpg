@@ -329,10 +329,10 @@ grow_vertical = 0
 text = "選單 (Tab)"
 label_settings = SubResource("LabelSettings_uewes")
 
-[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/InventoryButton" to="UIManager" method="change_tab" binds= [0]]
-[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/EquipmentButton" to="UIManager" method="change_tab" binds= [1]]
-[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/PartyButton" to="UIManager" method="change_tab" binds= [2]]
-[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/QuestButton" to="UIManager" method="change_tab" binds= [3]]
-[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/SkillButton" to="UIManager" method="change_tab" binds= [4]]
-[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/SystemButton" to="UIManager" method="change_tab" binds= [5]]
+[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/InventoryButton" to="UIManager" method="_change_tab" binds= [0]]
+[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/EquipmentButton" to="UIManager" method="_change_tab" binds= [1]]
+[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/PartyButton" to="UIManager" method="_change_tab" binds= [2]]
+[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/QuestButton" to="UIManager" method="_change_tab" binds= [3]]
+[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/SkillButton" to="UIManager" method="_change_tab" binds= [4]]
+[connection signal="pressed" from="UIManager/SystemMenu/HBoxContainer/SideBar/SystemButton" to="UIManager" method="_change_tab" binds= [5]]
 [connection signal="pressed" from="UIManager/MenuButton" to="UIManager" method="toggle_system_menu"]

@@ -1,8 +1,18 @@
 extends CanvasLayer
 
+const TAB_TITLES = {
+	0: "背包",
+	1: "裝備",
+	2: "隊伍",
+	3: "任務",
+	4: "技能",
+	5: "系統",
+}
+
 @onready var system_menu = $SystemMenu
 @onready var sidebar = $SystemMenu/HBoxContainer/SideBar
-@onready var tab_container = $SystemMenu/HBoxContainer/TabContainer
+@onready var title = $SystemMenu/HBoxContainer/VBoxContainer/Title
+@onready var tab_container = $SystemMenu/HBoxContainer/VBoxContainer/TabContainer
 @onready var menu_button = $MenuButton
 
 # 顯示/隱藏系統選單
@@ -31,6 +41,10 @@ func _toggle_system_menu():
 func _change_tab(index: int):
 	if index < tab_container.get_child_count():
 		tab_container.current_tab = index
+
+		# 修改 label 的內容
+		if TAB_TITLES:
+			title.text = TAB_TITLES[index]
 
 		# 選擇對應的按鈕
 		var buttons = sidebar.get_children()

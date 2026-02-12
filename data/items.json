@@ -1,0 +1,52 @@
+[
+	{
+		"id": 1,
+		"name": "小型生命藥水",
+		"icon": "potion_red_s.png",
+		"price": 50,
+		"amount": 1,
+		"type": "consumable",
+		"desc": "恢復 100 點生命值。",
+		"effect": { "hp": 100 }
+	},
+	{
+		"id": 2,
+		"name": "中型生命藥水",
+		"icon": "potion_red_m.png",
+		"price": 50,
+		"amount": 2,
+		"type": "consumable",
+		"desc": "恢復 200 點生命值。",
+		"effect": { "hp": 200 }
+	},
+	{
+		"id": 3,
+		"name": "大型生命藥水",
+		"icon": "potion_red_l.png",
+		"price": 50,
+		"amount": 3,
+		"type": "consumable",
+		"desc": "恢復 300 點生命值。",
+		"effect": { "hp": 300 }
+	},
+	{
+		"id": 4,
+		"name": "長劍",
+		"icon": "sword.png",
+		"price": 450,
+		"amount": 1,
+		"type": "weapon",
+		"desc": "非常鋒利。",
+		"effect": { "atk": 25 }
+	},
+	{
+		"id": 5,
+		"name": "地圖",
+		"icon": "map.png",
+		"price": 450,
+		"amount": 1,
+		"type": "other",
+		"desc": "一張老舊的地圖",
+		"effect": null
+	}
+]

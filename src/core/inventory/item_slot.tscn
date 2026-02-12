@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b746n7pwnhv71"]
+
+[ext_resource type="Script" uid="uid://cpn1s8sc36fr5" path="res://src/core/inventory/item_slot.gd" id="1_rm2a0"]
+[ext_resource type="Texture2D" uid="uid://c8p84dn2nhf2l" path="res://assets/images/objects/potion_red_l.png" id="2_f3bbs"]
+
+[node name="ItemSlot" type="Button" unique_id=1585232007]
+custom_minimum_size = Vector2(0, 60)
+offset_right = 160.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_rm2a0")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1991003698]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -16.0
+offset_right = 69.0
+offset_bottom = 48.0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f3bbs")
+
+[node name="Name" type="Label" parent="." unique_id=1911013896]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 16.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "物品名"
+
+[node name="Amount" type="Label" parent="." unique_id=1931319007]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -11.0
+offset_right = 7.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.68, 1)
+text = "1"
+horizontal_alignment = 1

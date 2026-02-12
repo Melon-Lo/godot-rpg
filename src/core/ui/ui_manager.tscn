@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://cr02rasvp0u3l" path="res://src/core/inventory/inventory.gd" id="8_p6vyg"]
 [ext_resource type="PackedScene" uid="uid://b746n7pwnhv71" path="res://src/core/inventory/item_slot.tscn" id="9_6cqix"]
 [ext_resource type="Texture2D" uid="uid://dosh6pucdfgan" path="res://assets/images/ui/menu_cross.png" id="9_6mshi"]
-[ext_resource type="Texture2D" uid="uid://c8p84dn2nhf2l" path="res://assets/images/objects/potion_red_l.png" id="10_l63rf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgm53"]
 draw_center = false
@@ -37,6 +36,7 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_lrlm8")
 
 [node name="SystemMenu" type="Panel" parent="." unique_id=402998163]
+visible = false
 offset_left = 147.0
 offset_top = 68.0
 offset_right = 1147.0
@@ -366,7 +366,6 @@ size_flags_stretch_ratio = 2.0
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
-texture = ExtResource("10_l63rf")
 stretch_mode = 5
 
 [node name="ItemName" type="Label" parent="SystemMenu/HBoxContainer/VBoxContainer/TabContainer/Inventory/Layout/ContentArea/ItemDetails" unique_id=1552786142]
